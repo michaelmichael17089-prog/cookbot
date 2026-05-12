@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CookBot | Meal Plan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png?v=3">
+  <link rel="shortcut icon" type="image/png" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+  <div class="page-loader page-loader--history" aria-hidden="true">
+    <div class="page-loader-card">
+      <p class="page-loader-title">CookBot</p>
+      <p class="page-loader-copy">Cook with your kitchen assistent</p>
+      <div class="page-loader-cook" aria-hidden="true"><span class="page-loader-steam"></span><span class="page-loader-steam"></span><span class="page-loader-steam"></span><div class="page-loader-pot"></div></div>
+    </div>
+  </div>
+  <div class="app">
+    <div class="app-shell container-xxl">
+      <header class="topbar">
+        <div class="brand">
+          <a href="cook_bot.html" aria-label="Go to CookBot home">
+            <img src="assets/images/COOK_BOT_LOGO.png" alt="CookBot" class="brand-logo">
+          </a>
+        </div>
+        <div class="top-actions"></div>
+      </header>
+
+      <section class="page-heading">
+        <h2>Meal Plan</h2>
+      </section>
+
+      <main class="meal-plan-shell">
+        <section class="meal-plan-card">
+          <div class="meal-plan-controls" aria-label="Meal plan options">
+            <button class="active" data-plan="balanced" type="button">Balanced</button>
+            <button data-plan="high-protein" type="button">High Protein</button>
+            <button data-plan="vegetarian" type="button">Vegetarian</button>
+            <button id="refreshPlan" type="button">Refresh Week</button>
+          </div>
+
+          <h3 class="meal-plan-title">This Week</h3>
+          <p class="meal-plan-copy" id="mealPlanCopy">Building your weekly plan from saved history.</p>
+          <div class="meal-week-grid" id="weekGrid"></div>
+        </section>
+
+        <aside class="meal-plan-card">
+          <h3 class="meal-plan-title">Grocery List</h3>
+          <ul class="meal-grocery-list" id="groceryList"></ul>
+        </aside>
+      </main>
+
+      <footer class="site-footer">
+        <p>CookBot keeps your recipes, history, and weekly plans together.</p>
+        <div class="site-footer-links">
+          <a href="about.html">About</a>
+          <a href="help_center.html">Help Center</a>
+        </div>
+        <p class="site-footer-copy">&copy; 2026 CookBot. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item" aria-label="Home" data-nav="home">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11.5 12 4l9 7.5"></path>
+            <path d="M5.5 10.5V20h5v-5h3v5h5v-9.5"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" aria-label="History" data-nav="history">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+            <path d="M3 4v5h5"></path>
+            <path d="M12 7.5V12l3 2"></path>
+          </svg>
+        </span>
+        <span class="nav-label">History</span>
+      </button>
+      <button class="nav-item" aria-label="Favorite" data-nav="favorite">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3 2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9Z"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Favorite</span>
+      </button>
+      <button class="nav-item active" aria-label="Meal Plan" data-nav="meal-plan">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+            <path d="M8 4v16"></path>
+            <path d="M12 8h4"></path>
+            <path d="M12 12h4"></path>
+            <path d="M12 16h4"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Meal Plan</span>
+      </button>
+      <button class="nav-item" aria-label="More" data-nav="more">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="12" r="1.6"></circle>
+            <circle cx="12" cy="12" r="1.6"></circle>
+            <circle cx="19" cy="12" r="1.6"></circle>
+          </svg>
+        </span>
+        <span class="nav-label">More</span>
+      </button>
+    </nav>
+  </div>
+
+  <script>
+    (() => {
+    const MEAL_PLAN_HISTORY_KEY = "cookbot_history";
+    const MEAL_PLAN_USER_KEY = "cookbot_user";
+    const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const mealsByPlan = {
+      balanced: [
+        { meal: "Greek Yogurt Bowl", ingredients: ["Greek yogurt", "Berries", "Granola"] },
+        { meal: "Grilled Chicken Wrap", ingredients: ["Chicken breast", "Tortilla", "Lettuce"] },
+        { meal: "Salmon + Quinoa", ingredients: ["Salmon", "Quinoa", "Broccoli"] },
+        { meal: "Avocado Toast", ingredients: ["Bread", "Avocado", "Eggs"] },
+        { meal: "Turkey Rice Bowl", ingredients: ["Ground turkey", "Brown rice", "Peppers"] },
+        { meal: "Stir-Fry Tofu", ingredients: ["Tofu", "Carrots", "Soy sauce"] }
+      ],
+      "high-protein": [
+        { meal: "Egg White Omelet", ingredients: ["Egg whites", "Spinach", "Cheese"] },
+        { meal: "Steak Burrito Bowl", ingredients: ["Steak", "Rice", "Black beans"] },
+        { meal: "Chicken Lentil Curry", ingredients: ["Chicken thighs", "Lentils", "Coconut milk"] },
+        { meal: "Protein Smoothie", ingredients: ["Protein powder", "Banana", "Milk"] },
+        { meal: "Tuna Salad Plate", ingredients: ["Tuna", "Mixed greens", "Tomatoes"] },
+        { meal: "Baked Cod + Potatoes", ingredients: ["Cod", "Potatoes", "Asparagus"] }
+      ],
+      vegetarian: [
+        { meal: "Chia Pudding", ingredients: ["Chia seeds", "Almond milk", "Mango"] },
+        { meal: "Chickpea Shawarma Bowl", ingredients: ["Chickpeas", "Cucumber", "Yogurt"] },
+        { meal: "Mushroom Pasta", ingredients: ["Pasta", "Mushrooms", "Parmesan"] },
+        { meal: "Peanut Oatmeal", ingredients: ["Oats", "Peanut butter", "Banana"] },
+        { meal: "Caprese Sandwich", ingredients: ["Bread", "Mozzarella", "Tomatoes"] },
+        { meal: "Vegetable Paella", ingredients: ["Rice", "Peas", "Bell peppers"] }
+      ]
+    };
+
+    let currentPlan = "balanced";
+    let refreshOffset = 0;
+
+    function getHistoryStorageKey() {
+      try {
+        const rawUser = localStorage.getItem(MEAL_PLAN_USER_KEY);
+        const user = rawUser ? JSON.parse(rawUser) : null;
+        const email = String(user?.email || "").trim().toLowerCase();
+        if (!email) return "";
+        return `${MEAL_PLAN_HISTORY_KEY}:${email}`;
+      } catch {
+        return "";
+      }
+    }
+
+    function readHistoryEntries() {
+      const storageKey = getHistoryStorageKey();
+      if (!storageKey) {
+        return [];
+      }
+
+      try {
+        const raw = localStorage.getItem(storageKey);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function uniqueList(values) {
+      const seen = new Set();
+      return values.filter((value) => {
+        const normalized = String(value || "").trim().toLowerCase();
+        if (!normalized || seen.has(normalized)) return false;
+        seen.add(normalized);
+        return true;
+      });
+    }
+
+    function extractPromptIngredients(prompt) {
+      return uniqueList(
+        String(prompt || "")
+          .split(/,| and | with | plus |\//i)
+          .map((item) => item.trim())
+          .filter((item) => item && item.length > 2)
+          .slice(0, 6)
+      );
+    }
+
+    function normalizeHistoryRecipe(recipe, historyItem, index) {
+      const ingredients = uniqueList([
+        ...extractPromptIngredients(historyItem?.prompt),
+        ...(historyItem?.filters?.origin ? [historyItem.filters.origin] : []),
+        ...(historyItem?.filters?.dietaryPreference ? [historyItem.filters.dietaryPreference] : [])
+      ]);
+
+      return {
+        meal: String(recipe?.name || "Recipe").trim(),
+        ingredients: ingredients.length ? ingredients : ["Pantry staples"],
+        desc: String(recipe?.desc || "").trim(),
+        tag: String(recipe?.tag || "").trim(),
+        diet: String(historyItem?.filters?.dietaryPreference || "").trim().toLowerCase(),
+        source: String(historyItem?.source || "history").trim(),
+        rank: index
+      };
+    }
+
+    function buildHistoryMealPool() {
+      const entries = readHistoryEntries();
+      const meals = [];
+
+      entries.forEach((historyItem, historyIndex) => {
+        const recipes = Array.isArray(historyItem?.recipes) ? historyItem.recipes : [];
+        recipes.forEach((recipe) => {
+          if (!recipe?.name) return;
+          meals.push(normalizeHistoryRecipe(recipe, historyItem, historyIndex));
+        });
+      });
+
+      return meals;
+    }
+
+    function isHighProteinMeal(meal) {
+      const text = `${meal.meal} ${meal.desc} ${meal.tag} ${meal.diet}`.toLowerCase();
+      const keywords = ["protein", "chicken", "egg", "eggs", "turkey", "tuna", "salmon", "beef", "lentil", "keto"];
+      return keywords.some((keyword) => text.includes(keyword));
+    }
+
+    function isVegetarianMeal(meal) {
+      const text = `${meal.meal} ${meal.desc} ${meal.tag} ${meal.diet}`.toLowerCase();
+      const meatKeywords = ["chicken", "beef", "steak", "fish", "salmon", "tuna", "turkey", "prawn", "shrimp", "meat"];
+      if (text.includes("vegetarian") || text.includes("vegan")) return true;
+      if (meatKeywords.some((keyword) => text.includes(keyword))) return false;
+      const vegKeywords = ["tofu", "paneer", "mushroom", "vegetable", "chickpea", "lentil", "bean"];
+      return vegKeywords.some((keyword) => text.includes(keyword));
+    }
+
+    function filterHistoryMealsByPlan(plan, meals) {
+      if (plan === "high-protein") {
+        const filtered = meals.filter(isHighProteinMeal);
+        return filtered.length ? filtered : meals;
+      }
+
+      if (plan === "vegetarian") {
+        const filtered = meals.filter(isVegetarianMeal);
+        return filtered.length ? filtered : meals;
+      }
+
+      return meals;
+    }
+
+    function getMealPool(plan) {
+      const historyMeals = filterHistoryMealsByPlan(plan, buildHistoryMealPool());
+      if (historyMeals.length) {
+        return {
+          meals: historyMeals,
+          fromHistory: true
+        };
+      }
+
+      return {
+        meals: mealsByPlan[plan] || mealsByPlan.balanced,
+        fromHistory: false
+      };
+    }
+
+    function pickMealFromPool(pool, pointer) {
+      return pool[pointer % pool.length];
+    }
+
+    function pickMeals(plan) {
+      const { meals, fromHistory } = getMealPool(plan);
+      const schedule = [];
+
+      for (let index = 0; index < weekDays.length; index += 1) {
+        const base = refreshOffset + index * 3;
+        schedule.push({
+          breakfast: pickMealFromPool(meals, base),
+          lunch: pickMealFromPool(meals, base + 1),
+          dinner: pickMealFromPool(meals, base + 2)
+        });
+      }
+
+      return { schedule, fromHistory, totalMeals: meals.length };
+    }
+
+    function renderWeek() {
+      const { schedule, fromHistory, totalMeals } = pickMeals(currentPlan);
+      const weekGrid = document.getElementById("weekGrid");
+      const groceryList = document.getElementById("groceryList");
+      const mealPlanCopy = document.getElementById("mealPlanCopy");
+      weekGrid.innerHTML = "";
+      const ingredientCount = {};
+
+      if (mealPlanCopy) {
+        mealPlanCopy.textContent = fromHistory
+          ? `Built from ${totalMeals} meals found in your saved history.`
+          : "No history recipes found yet, so this week uses starter meal ideas.";
+      }
+
+      schedule.forEach((dayMeals, index) => {
+        const day = document.createElement("article");
+        day.className = "meal-day";
+        day.style.animationDelay = `${index * 0.06}s`;
+        day.innerHTML = `
+          <h4>${weekDays[index]}</h4>
+          <div class="meal-item"><small>Breakfast</small>${dayMeals.breakfast.meal}</div>
+          <div class="meal-item"><small>Lunch</small>${dayMeals.lunch.meal}</div>
+          <div class="meal-item"><small>Dinner</small>${dayMeals.dinner.meal}</div>
+          <button class="swap" type="button">Swap Day</button>
+        `;
+
+        day.querySelector(".swap").addEventListener("click", () => {
+          refreshOffset += 1;
+          renderWeek();
+        });
+
+        [dayMeals.breakfast, dayMeals.lunch, dayMeals.dinner].forEach((m) => {
+          (Array.isArray(m.ingredients) ? m.ingredients : []).forEach((item) => {
+            ingredientCount[item] = (ingredientCount[item] || 0) + 1;
+          });
+        });
+
+        weekGrid.appendChild(day);
+      });
+
+      groceryList.innerHTML = Object.entries(ingredientCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 14)
+        .map(([item, times]) => `<li>${item}<span class="meal-pill">${times} meals</span></li>`)
+        .join("");
+    }
+
+    document.querySelectorAll("[data-plan]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-plan]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentPlan = btn.dataset.plan;
+        refreshOffset = 0;
+        renderWeek();
+      });
+    });
+
+    document.getElementById("refreshPlan").addEventListener("click", () => {
+      refreshOffset += 3;
+      renderWeek();
+    });
+    renderWeek();
+    })();
+  </script>
+  <script src="src/scripts/favorites.js" defer></script>
+  <script src="src/scripts/page-loader.js" defer></script>
+</body>
+</html>
+

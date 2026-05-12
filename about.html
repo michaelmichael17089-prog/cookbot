@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CookBot | About</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png?v=2">
+  <link rel="shortcut icon" type="image/png" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" href="favicon.png?v=2">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="app-shell container-xxl">
+      <header class="topbar">
+        <div class="brand">
+          <a href="cook_bot.html" aria-label="Go to CookBot home">
+            <img src="assets/images/COOK_BOT_LOGO.png" alt="CookBot" class="brand-logo">
+          </a>
+        </div>
+        <div class="top-actions"></div>
+      </header>
+
+      <section class="page-heading with-back">
+        <a href="more.html" class="back-link" aria-label="Go back to More">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+        </a>
+        <h2>About CookBot</h2>
+      </section>
+
+      <main class="about-page-grid">
+        <section class="about-hero-card">
+          <div class="about-logo-wrap">
+            <img
+              src="assets/images/cookbot_logo.png"
+              alt="CookBot logo"
+              class="about-logo"
+            >
+          </div>
+          <p class="home-hero-kicker">Smart Kitchen Support</p>
+          <h3 class="home-hero-title">CookBot helps turn ingredients into practical meal ideas in seconds.</h3>
+          <p class="generated-reply">Use the app to generate recipe suggestions, save favorites, keep a history of requests, and build simple weekly meal plans.</p>
+        </section>
+
+        <section class="about-section-card">
+          <h3 class="meal-plan-title">What You Can Do</h3>
+          <div class="about-metric-grid">
+            <article class="about-metric">
+              <strong>Generate</strong>
+              <span>Create ingredient-based recipe ideas with optional country and diet filters.</span>
+            </article>
+            <article class="about-metric">
+              <strong>Save</strong>
+              <span>Keep favorite recipes and rate them for quick access later.</span>
+            </article>
+            <article class="about-metric">
+              <strong>Track</strong>
+              <span>Review your recent recipe requests from the History page.</span>
+            </article>
+            <article class="about-metric">
+              <strong>Plan</strong>
+              <span>Build a simple weekly meal plan and grocery summary.</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="about-section-card">
+          <h3 class="meal-plan-title">CookBot Focus</h3>
+          <ul class="about-list">
+            <li>Fast recipe discovery from what you already have at home.</li>
+            <li>Simple filters for country-based and dietary-friendly ideas.</li>
+            <li>Lightweight tools that work without a complicated setup.</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>CookBot keeps your recipes, history, and weekly plans together.</p>
+        <div class="site-footer-links">
+          <a href="about.html">About</a>
+          <a href="help_center.html">Help Center</a>
+        </div>
+        <p class="site-footer-copy">&copy; 2026 CookBot. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item" aria-label="Home" data-nav="home">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11.5 12 4l9 7.5"></path>
+            <path d="M5.5 10.5V20h5v-5h3v5h5v-9.5"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" aria-label="History" data-nav="history">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+            <path d="M3 4v5h5"></path>
+            <path d="M12 7.5V12l3 2"></path>
+          </svg>
+        </span>
+        <span class="nav-label">History</span>
+      </button>
+      <button class="nav-item" aria-label="Favorite" data-nav="favorite">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3 2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9Z"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Favorite</span>
+      </button>
+      <button class="nav-item" aria-label="Meal Plan" data-nav="meal-plan">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+            <path d="M8 4v16"></path>
+            <path d="M12 8h4"></path>
+            <path d="M12 12h4"></path>
+            <path d="M12 16h4"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Meal Plan</span>
+      </button>
+      <button class="nav-item active" aria-label="More" data-nav="more">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="12" r="1.6"></circle>
+            <circle cx="12" cy="12" r="1.6"></circle>
+            <circle cx="19" cy="12" r="1.6"></circle>
+          </svg>
+        </span>
+        <span class="nav-label">More</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="src/scripts/favorites.js" defer></script>
+</body>
+</html>

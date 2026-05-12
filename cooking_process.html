@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CookBot | Cooking Process</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png?v=3">
+  <link rel="shortcut icon" type="image/png" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+  <div class="page-loader page-loader--history" aria-hidden="true">
+    <div class="page-loader-card">
+      <p class="page-loader-title">CookBot</p>
+      <p class="page-loader-copy">Cook with your kitchen assistent</p>
+      <div class="page-loader-cook" aria-hidden="true"><span class="page-loader-steam"></span><span class="page-loader-steam"></span><span class="page-loader-steam"></span><div class="page-loader-pot"></div></div>
+    </div>
+  </div>
+  <div class="app">
+    <div class="app-shell container-xxl">
+      <header class="topbar">
+        <div class="brand">
+          <a href="cook_bot.html" aria-label="Go to CookBot home">
+            <img src="assets/images/COOK_BOT_LOGO.png" alt="CookBot" class="brand-logo">
+          </a>
+        </div>
+        <div class="top-actions"></div>
+      </header>
+
+      <section class="page-heading">
+        <h2>Cooking Process</h2>
+      </section>
+
+      <main class="cooking-process-page-shell">
+        <section class="cooking-process-card cooking-process-page-card" id="cookingProcessCard">
+          <div class="cooking-process-header-row">
+            <div>
+              <p class="cooking-process-kicker">Recipe Walkthrough</p>
+              <h3 class="cooking-process-title" id="cookingProcessPageTitle">Recipe</h3>
+              <p class="cooking-process-meta" id="cookingProcessPageMeta">Follow the steps below to start cooking.</p>
+            </div>
+            <button type="button" class="ghost-btn cooking-process-back-button" id="backToRecipesButton">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 18 9 12l6-6"></path>
+              </svg>
+              <span>Back</span>
+            </button>
+          </div>
+
+          <div class="cooking-process-image-wrap">
+            <img id="cookingProcessPageImage" class="cooking-process-image" src="assets/images/COOK_BOT_LOGO.png" alt="Recipe image">
+          </div>
+          <p class="cooking-process-summary" id="cookingProcessPageSummary"></p>
+          <div class="cooking-process-ingredients" id="cookingProcessPageIngredients"></div>
+          <ol class="cooking-process-steps" id="cookingProcessPageSteps"></ol>
+        </section>
+
+        <section class="meal-plan-card cooking-process-empty" id="cookingProcessEmpty" hidden>
+          <h3 class="meal-plan-title">No recipe selected</h3>
+          <p>Choose any recipe and tap <strong>Start</strong> to open its cooking process here.</p>
+          <div class="cooking-process-empty-actions">
+            <a class="primary-btn" href="cook_bot.html">Go to Home</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>CookBot keeps your recipes, history, and weekly plans together.</p>
+        <div class="site-footer-links">
+          <a href="about.html">About</a>
+          <a href="help_center.html">Help Center</a>
+        </div>
+        <p class="site-footer-copy">&copy; 2026 CookBot. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item" aria-label="Home" data-nav="home">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11.5 12 4l9 7.5"></path>
+            <path d="M5.5 10.5V20h5v-5h3v5h5v-9.5"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" aria-label="History" data-nav="history">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+            <path d="M3 4v5h5"></path>
+            <path d="M12 7.5V12l3 2"></path>
+          </svg>
+        </span>
+        <span class="nav-label">History</span>
+      </button>
+      <button class="nav-item" aria-label="Favorite" data-nav="favorite">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3 2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9Z"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Favorite</span>
+      </button>
+      <button class="nav-item" aria-label="Meal Plan" data-nav="meal-plan">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+            <path d="M8 4v16"></path>
+            <path d="M12 8h4"></path>
+            <path d="M12 12h4"></path>
+            <path d="M12 16h4"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Meal Plan</span>
+      </button>
+      <button class="nav-item" aria-label="More" data-nav="more">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="12" r="1.6"></circle>
+            <circle cx="12" cy="12" r="1.6"></circle>
+            <circle cx="19" cy="12" r="1.6"></circle>
+          </svg>
+        </span>
+        <span class="nav-label">More</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="src/scripts/favorites.js" defer></script>
+  <script src="src/scripts/cooking-process-page.js" defer></script>
+  <script src="src/scripts/page-loader.js" defer></script>
+</body>
+</html>
